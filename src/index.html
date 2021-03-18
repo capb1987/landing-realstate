@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" />
+
+    <!-- GOOGLE FONTS -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>RealState - Landing Page</title>
+  </head>
+  <body>
+    <div class="contenido-principal">
+      <header class="contenido-principal__header">
+        <div class="contenedor header">
+          <div class="header__logo">
+            <img alt="imagen logo" class="img__logo" />
+
+            <div class="header__menuToogle" id="mobile-menu">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+          </div>
+
+          <nav class="header__nav">
+            <a href="/" class="nav__item">Home</a>
+            <a href="#quienes" class="nav__item">Quiénes Somos</a>
+            <a href="#testimonios" class="nav__item">Testimonios</a>
+            <a href="#bienes" class="nav__item">Mis Bienes</a>
+            <a href="#contacto" class="nav__item">Contacto</a>
+          </nav>
+        </div>
+      </header>
+      <main class="contenido-principal__slider">
+        <div id="splide" class="splide">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <li class="splide__slide">
+                <img class="slider" alt="slider 1" />
+              </li>
+              <li class="splide__slide">
+                <img class="slider" alt="slider 2" />
+              </li>
+              <li class="splide__slide">
+                <img class="slider" alt="slider 3" />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </main>
+      <div data-aos="fade-down" class="contenido-principal__quienes">
+        <div class="contenedor quienes">
+          <h2 class="quienes__titulo" id="quienes">Quiénes Somos</h2>
+          <img class="quienes__img" alt="quienes" />
+          <p class="quienes__parrafo">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque totam
+            unde delectus repellendus explicabo ratione commodi vel tempora.
+            Officia voluptatum autem nemo iure?
+          </p>
+          <p class="quienes__parrafo">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio rem
+            corrupti nihil optio neque, animi facilis reiciendis aliquid atque
+            rerum omnis numquam reprehenderit sequi nam, sit harum libero nulla
+            officiis praesentium quos labore nostrum nobis? Aliquam, incidunt
+            beatae? Ut, quasi delectus. Fugiat recusandae culpa quae excepturi
+            repudiandae veritatis ex, eaque aliquam neque maiores nam sed
+            placeat est tempore consequuntur autem quam obcaecati inventore amet
+            soluta, voluptatibus magnam ullam at labore. Officia voluptate
+            dolore alias, possimus sint praesentium sapiente maiores nihil quae
+            ex reiciendis, adipisci quibusdam illo dolor eos. Nihil non labore
+            placeat dignissimos at soluta omnis architecto asperiores optio
+            repudiandae!
+          </p>
+        </div>
+      </div>
+      <div data-aos="fade-up" class="contenido-principal__testimonios">
+        <h2 class="testimonios__titulo" id="testimonios">Testimonios</h2>
+        <div class="testimonios__detalles">
+          <div id="splide-testimonio" class="splide">
+            <div class="splide__track">
+              <ul class="splide__list lista__testimonio">
+                <li class="splide__slide item__testimonio">
+                  <img class="testimonio__img" alt="imagen 1" />
+
+                  <h2 class="testimonio__nombre"></h2>
+
+                  <p class="testimonio__reacciones"></p>
+                </li>
+                <li class="splide__slide item__testimonio">
+                  <img class="testimonio__img" alt="imagen 2" />
+
+                  <h2 class="testimonio__nombre"></h2>
+
+                  <p class="testimonio__reacciones"></p>
+                </li>
+                <li class="splide__slide item__testimonio">
+                  <img class="testimonio__img" alt="imagen 3" />
+
+                  <h2 class="testimonio__nombre"></h2>
+
+                  <p class="testimonio__reacciones"></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-aos="fade-right" class="contenido-principal__bienes">
+        <div class="contenedor bienes">
+          <h2 class="bienes__titulo" id="bienes">Bienes</h2>
+
+          <div class="cards__bienes">
+            <div class="card__bienes">
+              <div class="card__titulo">
+                <h3 class="titulo__detalle">Propiedad 1</h3>
+              </div>
+              <div class="card__body">
+                <img class="card__img card_imagen1" alt="inmueble 1" />
+                <p class="card__body__parrafo">
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Numquam, nihil. Ea ipsum voluptate vero praesentium odio,
+                  porro natus quis! Veniam et beatae consectetur.
+                </p>
+
+                <a href="#" class="btn__card__referencia">
+                  <button class="btn btn__card">Mas Información</button>
+                </a>
+              </div>
+            </div>
+            <div class="card__bienes">
+              <div class="card__titulo">
+                <h3 class="titulo__detalle">Propiedad 2</h3>
+              </div>
+              <div class="card__body">
+                <img class="card__img card_imagen1" alt="inmueble 2" />
+                <p class="card__body__parrafo">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Suscipit consectetur sunt facere, sint ratione aut sequi.
+                  Soluta minima sed aspernatur exercitationem magni ipsam.
+                </p>
+
+                <a href="#" class="btn__card__referencia">
+                  <button class="btn btn__card">Mas Información</button>
+                </a>
+              </div>
+            </div>
+            <div class="card__bienes">
+              <div class="card__titulo">
+                <h3 class="titulo__detalle">Propiedad 3</h3>
+              </div>
+              <div class="card__body">
+                <img class="card__img card_imagen1" alt="inmueble 3" />
+                <p class="card__body__parrafo">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Consequatur deleniti blanditiis voluptates eum accusantium vel
+                  sed necessitatibus dolorum, esse, culpa nesciunt placeat
+                  possimus.
+                </p>
+
+                <a href="#" class="btn__card__referencia">
+                  <button class="btn btn__card">Mas Información</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-aos="flip-down" class="contenido-principal__contacto">
+        <div class="contenedor contacto">
+          <h2 class="contacto__titulo" id="contacto">Contacto</h2>
+          <p class="error"></p>
+          <form class="contacto__form">
+            <div class="input__form">
+              <label for="nombre" class="input__label">Nombre</label>
+              <input
+                type="text"
+                class="input__nombre input"
+                id="nombre"
+                placeholder="Escribe tu nombre"
+              />
+            </div>
+            <div class="input__form">
+              <label for="apellido" class="input__label">Apellido</label>
+              <input
+                type="text"
+                class="input__apellido input"
+                id="apellido"
+                placeholder="Escribe tu apellido"
+              />
+            </div>
+            <div class="input__form">
+              <label for="correo" class="input__label">Correo</label>
+              <input
+                type="email"
+                class="input__correo input"
+                id="correo"
+                placeholder="Tu correo es?"
+              />
+            </div>
+            <div class="input__form">
+              <label for="detalle" class="input__label">Motivo o Razón</label>
+              <textarea id="detalle" class="input input__detalle"></textarea>
+            </div>
+
+            <div class="input__form">
+              <button type="submit" class="btn btn--submit">
+                Registrar Usuario
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <a href="#" class="btnSubir"
+        ><i class="far fa-arrow-alt-circle-up btn__subir"></i
+      ></a>
+      <footer class="contenido-principal__footer">
+        <p class="footer__descripcion">
+          Todos los derechos Registrados &reg; - Hecho por Carlos Andres Puello
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

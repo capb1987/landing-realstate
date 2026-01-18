@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+---
+
+<footer class="bg-[#758A93] text-neutral-content items-center p-4">
+  <div
+    class="flex flex-col md:flex-row container mx-auto max-w-6xl justify-between gap-4"
+  >
+    <aside class="flex flex-col md:flex-row items-center gap-2">
+      <Image
+        src="/logoRealState.png"
+        alt="Logo"
+        width={50}
+        height={50}
+        class=""
+      />
+
+      <p class="text-sm md:text-base">
+        Copyright © 2025 - {new Date().getFullYear()} Todos los derechos reservados
+      </p>
+    </aside>
+
+    <nav
+      class="flex items-center md:items-start justify-center flex-row gap-4 md:place-self-center md:justify-self-end"
+    >
+      <a
+        class="text-2xl md:text-3xl hover:text-slate-500 transition-all duration-300"
+        href="#"
+        target="_blank"
+      >
+        <FaFacebook client:load />
+      </a>
+
+      <a
+        class="text-2xl md:text-3xl hover:text-slate-500 transition-all duration-300"
+        href="#"
+        target="_blank"
+      >
+        <FaInstagram client:load />
+      </a>
+
+      <a
+        class="text-2xl md:text-3xl hover:text-slate-500 transition-all duration-300"
+        href="#"
+        target="_blank"
+      >
+        <FaTwitter client:load />
+      </a>
+    </nav>
+  </div>
+</footer>

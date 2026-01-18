@@ -1,0 +1,23 @@
+---
+import TestimonialCard from "@/components/Shared/TestimonialCard.astro";
+import { getAllTestimonials } from "@/data/testimonial";
+
+const testimonials = await getAllTestimonials();
+---
+
+<section
+  class="seccion min-h-dvh bg-linear-to-br from-slate-100 to-slate-300 p-4 md:p-8"
+>
+  <h1
+    id="testimonios"
+    class="scroll-mt-20 sm:scroll-mt-24 md:scroll-mt-28 text-center text-2xl md:p-0 md:text-4xl font-bold text-gray-900 uppercase"
+  >
+    Testimonios
+  </h1>
+  <div class="divider mx-auto md:max-w-xl"></div>
+  <div
+    class="grid gap-4 md:gap-8 md:grid-cols-2 lg:grid-cols-3 container mx-auto max-w-6xl place-items-center min-h-[70dvh] items-center"
+  >
+    {testimonials.map((item) => <TestimonialCard item={item} />)}
+  </div>
+</section>

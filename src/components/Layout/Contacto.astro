@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+
+import type { PropiedadType } from "@/types";
+import ContactForm from "@/components/Shared/react/ContactForm.tsx";
+
+const propiedades: PropiedadType[] = await getCollection("inmuebles");
+---
+
+<section
+  class="seccion min-h-dvh bg-linear-to-br from-slate-100 to-slate-300 p-4 md:p-8 items-center"
+>
+  <h1
+    id="contacto"
+    class="text-center scroll-mt-20 md:scroll-mt-24 text-2xl md:p-0 md:text-4xl font-bold uppercase"
+  >
+    Contacto
+  </h1>
+  <div class="divider mx-auto md:max-w-xl"></div>
+  <p class="text-slate-500 font-semibold italic font-serif text-center">
+    Escribenos a través de nuestro formulario. ¡Nos pondremos en contacto
+    contigo!
+  </p>
+
+  <div class="container mx-auto md:max-w-3xl py-4">
+    <ContactForm propiedades={propiedades} client:only="react" />
+  </div>
+</section>

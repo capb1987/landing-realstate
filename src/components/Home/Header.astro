@@ -1,0 +1,72 @@
+---
+import { itemsData as dataNav } from "@/data";
+import { Image } from "astro:assets";
+import HeaderLink from "@/components/Shared/HeaderLink.astro";
+---
+
+<header class="fixed top-0 w-full z-100 bg-[#758A93] shadow-md">
+  <div class="navbar container mx-auto lg:max-w-6xl">
+    <div class="navbar-start">
+      <div class="dropdown">
+        <div
+          tabindex="0"
+          role="button"
+          class="btn btn-ghost lg:hidden"
+          aria-label="Menu"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h8m-8 6h16"></path>
+          </svg>
+        </div>
+        <ul
+          tabindex="0"
+          class="menu menu-sm dropdown-content mt-3 z-1 p-2 shadow bg-[#758A93] rounded-box w-52"
+        >
+          {dataNav.map((item) => <HeaderLink item={item} />)}
+        </ul>
+      </div>
+
+      <a href="/" class="transition-transform hover:scale-105">
+        <Image
+          width={64}
+          height={64}
+          class="w-16 lg:w-20"
+          src="/logoRealState.png"
+          alt="logo"
+          loading="eager"
+        />
+      </a>
+    </div>
+
+    <div class="navbar-center hidden lg:flex">
+      <ul class="menu menu-horizontal px-1 gap-2">
+        {
+          dataNav.map((item) => (
+            <li>
+              <HeaderLink item={item} />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="navbar-end">
+      <a
+        href="#contacto"
+        class="links-nav bg-amber-400 hover:bg-amber-500 text-slate-900 uppercase px-4 py-2 font-bold rounded-lg transition-all text-sm md:text-base"
+      >
+        Agendar Cita
+      </a>
+    </div>
+  </div>
+</header>

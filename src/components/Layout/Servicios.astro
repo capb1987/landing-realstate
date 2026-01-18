@@ -1,0 +1,29 @@
+---
+import ServicioCard from "../Shared/ServicioCard.astro";
+import { services as arrServices } from "@/data/services";
+---
+
+<section
+  class="seccion min-h-dvh bg-linear-to-br from-white to-slate-100 p-4 md:p-8 items-center"
+>
+  <h1
+    id="servicios"
+    class="scroll-mt-20 sm:scroll-mt-24 md:scroll-mt-28 text-center text-2xl md:p-0 md:text-4xl font-bold uppercase"
+  >
+    Servicios
+  </h1>
+  <div class="divider mx-auto md:max-w-xl"></div>
+  <div
+    class="grid gap-4 md:gap-10 md:grid-cols-2 lg:grid-cols-3 container mx-auto max-w-7xl min-h-[60dvh] items-center"
+  >
+    {
+      arrServices.map((service) => (
+        <ServicioCard
+          title={service.title}
+          description={service.description}
+          icon={service.icon}
+        />
+      ))
+    }
+  </div>
+</section>

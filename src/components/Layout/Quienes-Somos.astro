@@ -1,0 +1,49 @@
+---
+import quienes from "@/img/quienes.jpg";
+import { Image } from "astro:assets";
+---
+
+<section
+  class="seccion min-h-dvh bg-linear-to-br from-slate-100 to-slate-300 p-4 items-center"
+>
+  <h1
+    id="quienes-somos"
+    class="scroll-mt-20 sm:scroll-mt-24 md:scroll-mt-28 text-center text-2xl md:p-0 md:text-4xl font-bold uppercase"
+  >
+    Quiénes somos
+  </h1>
+  <div class="divider mx-auto md:max-w-xl"></div>
+  <div
+    class="grid gap-4 md:gap-8 md:grid-cols-2 container mx-auto max-w-6xl min-h-[80dvh] items-center"
+  >
+    <div class="flex" data-aos="fade-right">
+      <Image
+        class="rounded-md shadow-lg mask w-full"
+        width={600}
+        height={600}
+        src={quienes}
+        alt="img quienes somos"
+      />
+    </div>
+    <div
+      class="space-y-2 md:space-y-4"
+      data-aos="fade-left"
+      data-aos-delay="150"
+      data-aos-duration="1000"
+    >
+      <p class="text-justify text-sm md:text-base lg:text-xl md:leading-10">
+        Tu aliado inmobiliario de confianza. Somos profesionales dedicados a
+        hacer realidad tus proyectos de vivienda o inversión. Nos mueve la
+        excelencia y el compromiso de ofrecerte un servicio honesto y experto.
+      </p>
+      <h2 class="text-xl md:text-3xl font-semibold font-serif text-center">
+        Nuestra estrategia
+      </h2>
+      <p class="text-sm md:text-base lg:text-xl md:leading-10 text-justify">
+        Hacemos que lo complejo sea sencillo. Nos adaptamos a lo que tú
+        necesitas, integrando todos los servicios necesarios para que comprar o
+        vender tu propiedad sea una experiencia fluida y sin complicaciones.
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,51 @@
+---
+import type { PropiedadType } from "@/types";
+
+import { Image } from "astro:assets";
+interface Props {
+  propiedad: PropiedadType;
+}
+
+const { propiedad } = Astro.props;
+
+const slug = propiedad.id.replace(/\.[^/.]+$/, "");
+---
+
+<div
+  class="card bg-stone-200 w-full shadow-xl hover:scale-105 hover:transition-all! duration-300! ease-in-out!"
+  data-aos="flip-left"
+  data-aos-delay="200"
+  data-aos-duration="3000"
+>
+  <figure>
+    <Image
+      width={200}
+      height={200}
+      src={propiedad.data.imagen}
+      class="h-50 w-full object-cover object-center"
+      alt="Propiedad Imagen"
+    />
+    {
+      propiedad.data.destacado && (
+        <div class="badge badge-warning text-black opacity-80 uppercase font-bold absolute top-3 left-3 text-xs md:text-base">
+          Destacado
+        </div>
+      )
+    }
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title text-base md:line-clamp-1 justify-center">
+      {propiedad.data.titulo}
+    </h2>
+    <p class="text-amber-600 font-semibold text-sm md:text-lg lg:text-xl">
+      ${propiedad.data.precio.toLocaleString()} COP
+    </p>
+    <div class="card-actions justify-end">
+      <a
+        rel="prefetch"
+        href={`/inmuebles/${slug}`}
+        class="btn btn-warning text-white w-full uppercase">Ver Propiedad</a
+      >
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+---
+import type { testimonial } from "@/types";
+
+import { testimonialImage_text as benefits } from "@/data/testimonial";
+import RatingComponent from "./RatingComponent.astro";
+export interface Props {
+  item: testimonial;
+}
+const { item } = Astro.props;
+const imageSrc = benefits.images[item.id - 1].toString();
+---
+
+<div
+  class="card max-h-100 bg-base-200 w-full shadow-sm"
+  data-aos="flip-up"
+  data-aos-delay="100"
+  data-aos-duration="1000"
+>
+  <div class="card-body p-3 md:p-6">
+    <h2 class="card-title font-bold">Testimonio {item.id}</h2>
+    <div class="divider divider-warning font-semibold my-2">
+      {item.firstName}
+      {item.lastName}
+    </div>
+    <p class="card-text">
+      <RatingComponent id={item.id} />
+      <figure>
+        <img
+          class="h-25 w-25 object-cover object-center rounded-full"
+          src={imageSrc}
+          alt="testimonio"
+          loading="lazy"
+        />
+      </figure>
+      <blockquote class="text-xs sm:text-sm italic text-center leading-relaxed">
+        &ldquo;{benefits.benefits[item.id - 1]}&rdquo;
+      </blockquote>
+    </p>
+  </div>
+</div>

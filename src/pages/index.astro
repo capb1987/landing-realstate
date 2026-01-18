@@ -1,0 +1,23 @@
+---
+import QuienesSomos from "@/components/Layout/Quienes-Somos.astro";
+import Hero from "../components/Layout/Hero.astro";
+import Layout from "../layouts/Layout.astro";
+import Testimonios from "@/components/Layout/Testimonios.astro";
+import Propiedades from "@/components/Layout/Propiedades.astro";
+import Servicios from "@/components/Layout/Servicios.astro";
+import Contacto from "@/components/Layout/Contacto.astro";
+import Blog from "@/components/Layout/Blog.astro";
+---
+
+<Layout
+  titulo="Smart House - Landing Page"
+  descripcion="Casas. Smart, real, state, apartamentos, bienes raices"
+>
+  <Hero />
+  <Propiedades />
+  <QuienesSomos />
+  <Servicios />
+  <Testimonios />
+  <Blog />
+  <Contacto />
+</Layout>

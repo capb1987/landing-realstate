@@ -1,0 +1,41 @@
+---
+import PropiedadCard from "@/components/Shared/PropiedadCard.astro";
+import type { PropiedadType } from "@/types";
+
+import { getCollection } from "astro:content";
+
+const propiedades: PropiedadType[] = await getCollection("inmuebles");
+---
+
+<section
+  class="seccion min-h-dvh bg-linear-to-br from-white to-slate-100 p-6 md:p-4 items-center"
+>
+  <h1
+    id="propiedades"
+    class="text-center text-2xl md:p-0 md:text-4xl font-bold scroll-mt-20 sm:scroll-mt-24 md:scroll-mt-28 uppercase"
+  >
+    Mis Propiedades
+  </h1>
+  <div class="divider mx-auto md:max-w-xl"></div>
+
+  <h2 class="text-xl text-center font-semibold text-gray-500 p-2">
+    Propiedades Destacadas
+  </h2>
+
+  <div
+    class="grid gap-4 md:gap-8 md:grid-cols-2 lg:grid-cols-3 container mx-auto max-w-6xl items-center py-4"
+  >
+    {
+      propiedades
+        .filter((item) => item.data.destacado)
+        .map((item) => <PropiedadCard propiedad={item} />)
+    }
+  </div>
+
+  <div class="divider divider-neutral mx-auto"></div>
+  <div
+    class="grid gap-4 md:gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 container mx-auto max-w-6xl min-h-[70dvh] items-center"
+  >
+    {propiedades.map((item) => <PropiedadCard propiedad={item} />)}
+  </div>
+</section>

@@ -1,0 +1,17 @@
+---
+import type { navItem } from "@/types";
+
+export interface Props {
+  item: navItem;
+}
+const { item } = Astro.props;
+---
+
+<li>
+  <a
+    class="links-nav text-base lg:text-lg text-white font-medium"
+    href={item.href}
+  >
+    {item.title}
+  </a>
+</li>

@@ -1,0 +1,123 @@
+---
+import "@/styles/global.css";
+import "aos/dist/aos.css";
+import Header from "@/components/Home/Header.astro";
+import Footer from "@/components/Home/Footer.astro";
+import { ClientRouter } from "astro:transitions";
+import { fade } from "astro:transitions";
+
+export type Props = {
+  titulo: string;
+  descripcion: string;
+};
+
+const { titulo, descripcion } = Astro.props;
+const pathname = Astro.url.pathname;
+const isHome = pathname === "/";
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={descripcion} />
+    <link rel="icon" type="image/x-icon" href="/iconoRealState.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{titulo}</title>
+    <ClientRouter />
+  </head>
+  <body
+    class="relative min-h-screen"
+    transition:animate={fade({ duration: "0.25s" })}
+  >
+    {isHome && <Header />}
+
+    <main>
+      <slot />
+    </main>
+
+    {isHome && <Footer />}
+    <script>
+      import AOS from "aos";
+      AOS.init();
+
+      function setupScrollSpy() {
+        const titles = document.querySelectorAll<HTMLElement>("h1[id]");
+        // Seleccionamos links que NO sean el botón de "Agendar Cita" (el cual tiene href="#contacto")
+        // O simplemente filtramos por la clase .links-nav que ya usas
+        const navLinks =
+          document.querySelectorAll<HTMLAnchorElement>(".links-nav");
+
+        if (titles.length === 0 || navLinks.length === 0) return;
+
+        // Función única para resaltar
+        const setActiveLink = (id: string | null) => {
+          navLinks.forEach((link) => {
+            const href = link.getAttribute("href")?.replace("#", "");
+            if (href === id) {
+              link.classList.add("active", "text-amber-300", "font-bold"); // Ejemplo de resalte
+              link.classList.remove("text-white");
+            } else {
+              link.classList.remove("active", "text-amber-300", "font-bold");
+              link.classList.add("text-white");
+            }
+          });
+        };
+
+        // --- 1. MANEJO DE CLICS ---
+        navLinks.forEach((link) => {
+          link.onclick = (e) => {
+            const href = link.getAttribute("href");
+            if (!href?.startsWith("#")) return; // Solo actuar si es un link interno
+
+            e.preventDefault();
+            const id = href.replace("#", "");
+            const target = document.getElementById(id);
+
+            if (target) {
+              // Resaltamos inmediatamente al hacer clic para feedback instantáneo
+              setActiveLink(id);
+
+              target.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          };
+        });
+
+        // --- 2. OBSERVER OPTIMIZADO ---
+        // El rootMargin "-10% 0px -80% 0px" crea una "línea de detección" cerca del tope
+        const observerOptions: IntersectionObserverInit = {
+          root: null,
+          rootMargin: "-10% 0px -85% 0px",
+          threshold: 0,
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            // Solo activamos si la sección está entrando en la zona superior
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute("id");
+
+              requestAnimationFrame(() => {
+                setActiveLink(id);
+
+                // Limpia la URL sin recargar para mantenerla estética
+                if (window.location.hash) {
+                  history.replaceState(null, "", window.location.pathname);
+                }
+              });
+            }
+          });
+        }, observerOptions);
+
+        titles.forEach((section) => observer.observe(section));
+      }
+
+      // Soporte para View Transitions de Astro
+      document.addEventListener("astro:page-load", setupScrollSpy);
+    </script>
+  </body>
+</html>

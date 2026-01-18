@@ -1,0 +1,42 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+
+export interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+---
+
+<div
+  class="card bg-linear-to-br from-slate-100 to-gray-200 w-full shadow-3xl"
+  data-aos="zoom-in"
+  data-aos-delay="150"
+  data-aos-duration="1000"
+>
+  <figure class="px-10 pt-10">
+    <Image
+      width={278}
+      height={200}
+      src={`${post.data.imagen}`}
+      alt={`${post.data.titulo}`}
+      class="rounded-xl w-full h-50 object-cover object-center"
+    />
+  </figure>
+  <div class="card-body items-center text-center">
+    <h2 class="card-title">{post.data.titulo}</h2>
+    <div class="divider my-2"></div>
+    <p class="line-clamp-4">
+      {post.body}
+    </p>
+    <div class="card-actions w-full md:w2/3 lg:w-1/2">
+      <a
+        rel="prefetch"
+        href={`/blog/${post.id}`}
+        class="btn btn-warning text-white w-full uppercase font-bold text-xs md:text-base"
+        >Leer más
+      </a>
+    </div>
+  </div>
+</div>

@@ -5,11 +5,6 @@
   @apply transition-colors duration-300 ease-in-out;
 }
 
-.links-nav.active {
-  /* Aquí puedes poner un borde inferior o un color sólido */
-  border-bottom: 2px solid #fbbf24; /* amber-400 */
-}
-
 body,
 html {
   overflow-x: hidden;

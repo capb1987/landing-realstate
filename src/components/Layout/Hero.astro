@@ -1,46 +1,62 @@
 ---
 import heroImg from "@/img/heroImg.jpg";
+// Importa la imagen del edificio para el fondo
+import edificioBg from "@/img/parallax.webp";
 import { Image } from "astro:assets";
 import { IoIosContact, IoMdHome } from "react-icons/io";
 ---
 
 <section
-  class="hero seccion bg-linear-to-br from-slate-100 to-slate-300 min-h-dvh"
+  class="relative overflow-hidden min-h-dvh flex items-center justify-center"
 >
   <div
-    class="hero-content flex-col lg:flex-row-reverse container mx-auto max-w-sm md:max-w-md lg:max-w-5xl gap-6"
+    class="absolute inset-0 z-0 bg-cover object-center bg-center bg-no-repeat"
+    style={`background-image: url(${edificioBg.src}); background-attachment: fixed;`}
+  >
+    <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-[5px]"></div>
+  </div>
+
+  <div
+    class="hero-content relative z-10 flex-col lg:flex-row-reverse container mx-auto max-w-sm md:max-w-md lg:max-w-5xl gap-6"
   >
     <Image
       width={600}
       height={600}
       src={heroImg}
-      class="lg:max-w-md rounded-lg shadow shadow-3xl mask mask-hexagon-2"
+      class="lg:max-w-md mask mask-circle border-white filter drop-shadow-2xl"
       alt="Imagen Hero"
       loading={"eager"}
       data-aos="fade-left"
-      data-aos-delay="50"
-      data-aos-duration="1000"
     />
-    <div class="text-center" data-aos="fade-right">
-      <h1 class="text-xl md:text-3xl lg:text-5xl font-bold">
+
+    <div class="text-center lg:text-left text-white" data-aos="fade-right">
+      <h1
+        class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-shadow-lg text-shadow-amber-600"
+      >
         Encuentra el lugar donde tu historia comienza.
       </h1>
-      <p class="py-6 text-base text-gray-500">
+      <p
+        class="py-6 text-base md:text-lg text-slate-100 text-shadow-lg text-shadow-slate-600"
+      >
         Te acompañamos en el proceso de comprar o rentar tu propiedad ideal con
         asesoría personalizada y transparencia total
       </p>
 
-      <div class="flex flex-col lg:flex-row gap-4 lg:gap-6 justify-around">
+      <div
+        class="flex flex-col lg:flex-row gap-4 lg:gap-6 justify-center lg:justify-start"
+      >
         <a
           href="#propiedades"
-          class="bg-blue-800 text-white w-full lg:w-[40%] px-1 py-3 cursor-pointer uppercase font-semibold rounded-md hover:bg-blue-900 transition-all duration-300 ease-in-out flex items-center justify-center gap-2"
-          ><IoMdHome className="text-2xl md:text-4xl" /> Ver Propiedades
+          class="bg-blue-800 text-white w-full lg:w-[50%] px-6 py-4 cursor-pointer uppercase font-bold rounded-md hover:bg-blue-700 transition-all duration-300 hover:shadow-sm hover:shadow-gray-400 flex items-center justify-center gap-2 text-sm md:text-base"
+        >
+          <IoMdHome className="text-2xl" /> Ver Propiedades
         </a>
 
         <a
           href="#contacto"
-          class="bg-amber-200 text-white w-full lg:w-[40%] px-1 py-3 cursor-pointer uppercase font-semibold rounded-md hover:bg-white hover:shadow-lg transition-all duration-300 hover:text-amber-300 ease-in-out flex items-center justify-center gap-2"
-          ><IoIosContact className="text-2xl md:text-4xl" /> Contáctanos
+          class="bg-amber-400 text-slate-900 w-full lg:w-[50%] px-6 py-4 cursor-pointer uppercase font-bold rounded-md hover:bg-white hover:text-amber-400 hover:shadow-sm hover:shadow-white transition-all duration-300 flex items-center justify-center gap-2 text-sm md:text-base"
+        >
+          <IoIosContact className="text-2xl" /> Contáctanos
         </a>
       </div>
     </div>

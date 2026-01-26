@@ -30,7 +30,7 @@ const ContactForm = ({ propiedades }: ContactFormProps) => {
     <form
       method="post"
       onSubmit={handleSubmit(onSubmit)}
-      className="bg-linear-to-br from-slate-400 via-40% to-gray-500 border border-slate-300 min-h-[50dvh] shadow-5xl rounded-2xl p-4 md:p-6 lg:p-8"
+      className="bg-linear-to-br from-slate-400 via-40% to-gray-500 border border-slate-300 min-h-[50dvh] shadow-2xl shadow-slate-400 rounded-2xl p-4 md:p-6 lg:p-8"
       data-aos="fade-in"
       data-aos-delay="150"
       data-aos-duration="2000"

@@ -1,6 +1,6 @@
 # Real State Landing Page creado con Astro
 
-![alt text](image.png)
+![alt text](image-1.png)
 
 ## 🚀 Tecnologías
 

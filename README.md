@@ -37,3 +37,7 @@ En el proyecto se utilizan React y React Hook Form para crear un formulario de c
 La página web se divide en diferentes secciones, cada una con su propio diseño y contenido. Se utilizan animaciones de CSS para mejorar la experiencia del usuario y hacer que la página web sea más atractiva y fácil de navegar.
 
 En resumen, este proyecto es una simulación de un sitio web para una empresa de inmobiliaria que permite a los clientes encontrar y compartir información sobre los apartamentos disponibles en la zona.
+
+Video de Youtube: https://youtu.be/2iuVj2DXZP0?si=8eEbiQjutaQUfCpJ
+
+Página web: https://realstatewebpackcapb.netlify.app/

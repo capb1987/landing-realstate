@@ -6,7 +6,7 @@ export const services: Props[] = [
   {
     title: "Pasión por conectar hogares",
     description:
-      "Somos un equipo de expertos dedicados a transformar la búsqueda de propiedades en una experiencia humana y transparente. No solo vendemos inmuebles; encontramos el escenario perfecto para el siguiente capítulo de tu vida.",
+      "Humanizamos la gestión inmobiliaria con transparencia. No vendemos metros, hallamos el escenario de tu próxima historia. Descubre las ventajas de ser un agente con propósito en nuestro equipo de expertos. Transforma vidas mientras construyes tu éxito profesional.",
     icon: FaHandshake,
   },
   {

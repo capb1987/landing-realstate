@@ -204,7 +204,7 @@ const ContactForm = ({ propiedades }: ContactFormProps) => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="group relative inline-flex items-center justify-center px-10 py-4 font-bold text-white transition-all duration-200 bg-black hover:bg-yellow-500 hover:text-black w-full md:w-auto"
+              className="group relative inline-flex items-center justify-center px-10 py-4 font-bold text-white transition-all duration-200 bg-black hover:bg-yellow-500 hover:text-black w-full md:w-auto hover: cursor-pointer"
             >
               {isSubmitting ? (
                 <span className="loading loading-spinner loading-sm"></span>

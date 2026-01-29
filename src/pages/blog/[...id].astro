@@ -41,7 +41,7 @@ const { data } = entrada;
         class="absolute inset-0 z-20 flex flex-col justify-end items-center pb-12 px-4 text-center"
       >
         <div
-          class="badge badge-warning mb-4 uppercase tracking-widest font-bold px-4 py-3"
+          class="badge badge-warning text-white mb-4 uppercase tracking-widest font-bold px-4 py-3"
         >
           Apartamento
         </div>
@@ -83,7 +83,7 @@ const { data } = entrada;
           <div class="flex flex-wrap gap-2 justify-center md:justify-end">
             {
               data.tags.map((tag) => (
-                <span class="badge badge-warning badge-md font-thin">
+                <span class="badge badge-warning text-black badge-md font-thin">
                   {tag}
                 </span>
               ))
@@ -109,7 +109,7 @@ const { data } = entrada;
         <div class="mt-16 flex justify-center">
           <a
             href="/#blog"
-            class="btn btn-warning btn-wide md:btn-lg rounded-full group transition-all"
+            class="btn btn-warning text-white btn-wide md:btn-lg rounded-full group transition-all"
           >
             <FaArrowLeft
               className="group-hover:-translate-x-2 transition-transform"

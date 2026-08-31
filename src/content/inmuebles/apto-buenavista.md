@@ -6,7 +6,7 @@ habitaciones: 3
 baños: 2
 area: 95
 parqueadero: true
-imagen: "/images/apto-buenavista.jpg"
+imagen: "../../img/apto-buenavista.jpg"
 destacado: false
 ---
 

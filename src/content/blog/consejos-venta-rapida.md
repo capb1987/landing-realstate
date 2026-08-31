@@ -2,7 +2,7 @@
 titulo: Consejos para la venta rápida de tu primera vivienda
 descripcion: Todo lo que necesitas para la venta rápida de tu primera vivienda
 fecha: 2022-04-02
-imagen: "/images/imgBlog/venta-rapida.webp"
+imagen: "../../img/venta-rapida.webp"
 autor: Adrián López
 tags: ["Venta", "Vivienda", "Propiedad", "Minimalismo"]
 ---

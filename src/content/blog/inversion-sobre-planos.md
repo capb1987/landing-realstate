@@ -2,7 +2,7 @@
 titulo: Porque hacer inversión en proyectos sobre planos
 descripcion: Por qué invertir en inmuebles y cómo hacerlo
 fecha: 2021-01-02
-imagen: "/images/imgBlog/inversion-ahorro.webp"
+imagen: "../../img/inversion-ahorro.webp"
 autor: Eccehomo Cetina
 tags: ["Invertir", "Ahorro", "Proyecto", "Capital"]
 ---

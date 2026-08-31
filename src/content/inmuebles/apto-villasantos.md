@@ -6,7 +6,7 @@ habitaciones: 3
 baños: 4
 area: 150
 parqueadero: true
-imagen: "/images/apto-villasantos.jpg"
+imagen: "../../img/apto-villasantos.jpg"
 destacado: true
 ---
 

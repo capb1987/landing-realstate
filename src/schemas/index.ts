@@ -14,13 +14,15 @@ export const testimonialSchema = z.object({
   id: z.number(),
   firstName: z.string(),
   lastName: z.string(),
+  rating: z.number().min(0).max(5).optional().default(5),
 });
 
 export const testimonialsSchema = z.array(testimonialSchema);
 
 export const wrapTestimonialSchema = z.object({
   benefits: z.array(z.string()),
-  images: z.array(z.string()),
+  images: z.array(z.any()),
+  ratings: z.array(z.number().min(0).max(5)).optional(),
 });
 
 export const ServiceSchema = z.object({

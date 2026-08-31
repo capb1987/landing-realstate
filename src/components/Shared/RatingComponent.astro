@@ -1,24 +1,24 @@
 ---
 export interface Props {
-  id: number;
+  rating: number;
 }
-const { id } = Astro.props;
+const { rating } = Astro.props;
+const clampedRating = Math.min(Math.max(Math.round(rating), 0), 5);
 ---
 
-<div class="rating justify-center">
-  <div class="mask mask-star bg-orange-400" aria-label="1 star"></div>
-  <div class="mask mask-star bg-orange-400" aria-label="2 star"></div>
-  <div class="mask mask-star bg-orange-400" aria-label="3 star"></div>
-  <div
-    class="mask mask-star bg-orange-400"
-    aria-label="4 star"
-    aria-current={id === 2 ? "true" : id === 1 ? "true" : "false"}
-  >
-  </div>
-  <div
-    class="mask mask-star bg-orange-400"
-    aria-label="5 star"
-    aria-current={id === 3 ? "true" : "false"}
-  >
-  </div>
+<div
+  class="rating justify-center gap-0.5"
+  role="img"
+  aria-label={`Calificación ${clampedRating} de 5 estrellas`}
+>
+  {
+    Array.from({ length: clampedRating }, (_, i) => (
+      <div class="mask mask-star bg-orange-400" aria-hidden="true" />
+    ))
+  }
+  {
+    Array.from({ length: 5 - clampedRating }, (_, i) => (
+      <div class="mask mask-star bg-slate-300" aria-hidden="true" />
+    ))
+  }
 </div>

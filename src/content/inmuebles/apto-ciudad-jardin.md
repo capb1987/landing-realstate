@@ -6,7 +6,7 @@ habitaciones: 3
 baños: 2
 area: 88
 parqueadero: true
-imagen: "/images/apto-jardin.jpg"
+imagen: "../../img/apto-jardin.jpg"
 destacado: false
 ---
 

@@ -1,0 +1,15 @@
+<div id="progress-bar" class="fixed top-0 left-0 z-[9999] h-[3px] bg-linear-to-r from-amber-400 to-amber-600 transition-none"></div>
+
+<script>
+  const bar = document.getElementById("progress-bar");
+
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = `${progress}%`;
+  }
+
+  window.addEventListener("scroll", updateProgress, { passive: true });
+  window.addEventListener("astro:page-load", updateProgress);
+</script>

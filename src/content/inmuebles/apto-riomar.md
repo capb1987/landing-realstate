@@ -6,7 +6,7 @@ habitaciones: 3
 baños: 3
 area: 120
 parqueadero: true
-imagen: "/images/apto-riomar.jpg"
+imagen: "../../img/apto-riomar.jpg"
 destacado: false
 ---
 

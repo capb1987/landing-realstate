@@ -5,6 +5,9 @@ import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import { fade } from "astro:transitions";
+import ProgressBar from "@/components/Blog/ProgressBar.astro";
+import BackToTop from "@/components/Blog/BackToTop.astro";
+import RelatedPosts from "@/components/Blog/RelatedPosts.astro";
 
 export async function getStaticPaths() {
   const blogs: CollectionEntry<"blog">[] = await getCollection("blog");
@@ -16,21 +19,30 @@ export async function getStaticPaths() {
 
 const { entrada } = Astro.props;
 const { data } = entrada;
+const allPosts = await getCollection("blog");
+const badge = data.tags?.[0] ?? "Artículo";
 ---
 
 <Layout titulo={`Smart House - ${data.titulo}`} descripcion={data.descripcion}>
+  <ProgressBar />
+  <BackToTop />
+
   <article
     class="min-h-screen bg-base-100"
     transition:animate={fade({ duration: "0.4s" })}
   >
-    <header class="relative w-full h-[60vh] md:h-[70vh] overflow-hidden">
+    <header
+      id="hero-blog"
+      class="relative w-full h-[60vh] md:h-[70vh] overflow-hidden"
+    >
       <Image
         src={data.imagen}
         alt={data.titulo}
-        width={1600}
-        height={900}
-        class="absolute inset-0 w-full h-full object-cover z-0"
+        width={1200}
+        class="absolute inset-0 w-full h-full object-cover z-0 parallax-img"
         loading="eager"
+        fetchpriority="high"
+        decoding="async"
       />
       <div
         class="absolute inset-0 bg-linear-to-t from-base-100 via-transparent to-black/30 z-10"
@@ -41,9 +53,9 @@ const { data } = entrada;
         class="absolute inset-0 z-20 flex flex-col justify-end items-center pb-12 px-4 text-center"
       >
         <div
-          class="badge badge-warning text-white mb-4 uppercase tracking-widest font-bold px-4 py-3"
+          class="badge badge-warning text-black mb-4 uppercase tracking-widest font-bold px-4 py-3"
         >
-          Apartamento
+          {badge}
         </div>
         <h1
           class="text-4xl md:text-7xl font-black text-white drop-shadow-lg max-w-5xl"
@@ -56,9 +68,13 @@ const { data } = entrada;
     <main class="container mx-auto max-w-4xl px-6 -mt-10 relative z-30">
       <div
         class="bg-base-200/80 backdrop-blur-md rounded-3xl p-6 md:p-8 shadow-xl border border-base-300"
+        data-aos="fade-up"
+        data-aos-duration="600"
       >
         <div
           class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center border-b border-base-300 pb-6 mb-6"
+          data-aos="fade-up"
+          data-aos-delay="100"
         >
           <div class="flex items-center gap-3 justify-center md:justify-start">
             <div class="avatar placeholder">
@@ -93,6 +109,8 @@ const { data } = entrada;
 
         <p
           class="text-xl italic text-center text-base-content/70 leading-relaxed font-light mb-8"
+          data-aos="fade-up"
+          data-aos-delay="150"
         >
           "{data.descripcion}"
         </p>
@@ -103,13 +121,18 @@ const { data } = entrada;
                  prose-p:leading-relaxed prose-p:text-justify
                  prose-img:rounded-2xl prose-img:shadow-lg"
           data-aos="fade-up"
+          data-aos-delay="200"
           set:html={entrada.rendered?.html}
         />
 
-        <div class="mt-16 flex justify-center">
+        <div
+          class="mt-16 flex justify-center"
+          data-aos="fade-up"
+          data-aos-delay="250"
+        >
           <a
             href="/#blog"
-            class="btn btn-warning text-white btn-wide md:btn-lg rounded-full group transition-all"
+            class="btn btn-warning text-black btn-wide md:btn-lg rounded-full group transition-all"
           >
             <FaArrowLeft
               className="group-hover:-translate-x-2 transition-transform"
@@ -118,15 +141,23 @@ const { data } = entrada;
           </a>
         </div>
       </div>
+
+      <RelatedPosts current={entrada} all={allPosts} />
     </main>
 
     <div class="h-20"></div>
   </article>
 </Layout>
 
-<style is:global>
-  /* Personalización extra para el HTML renderizado si no usas @tailwindcss/typography */
-  .prose p {
-    margin-bottom: 1.5rem;
+<script>
+  const heroImg = document.querySelector<HTMLElement>(".parallax-img");
+
+  function updateParallax() {
+    if (!heroImg) return;
+    const offset = window.scrollY * 0.3;
+    heroImg.style.transform = `translateY(${offset}px)`;
   }
-</style>
+
+  window.addEventListener("scroll", updateParallax, { passive: true });
+  window.addEventListener("astro:page-load", updateParallax);
+</script>

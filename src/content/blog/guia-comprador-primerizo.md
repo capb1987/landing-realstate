@@ -2,7 +2,7 @@
 titulo: Guía para comprar tu primera vivienda
 descripcion: Todo lo que necesitas saber desde el presupuesto inicial hasta la entrega de llaves
 fecha: 2023-02-02
-imagen: "/images/imgBlog/comprador-primerizo.webp"
+imagen: "../../img/comprador-primerizo.webp"
 autor: Carlos Puello
 tags: ["Guia", "Comprador", "Primerízo"]
 ---

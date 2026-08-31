@@ -4,7 +4,6 @@ import "aos/dist/aos.css";
 import Header from "@/components/Home/Header.astro";
 import Footer from "@/components/Home/Footer.astro";
 import { ClientRouter } from "astro:transitions";
-import { fade } from "astro:transitions";
 
 export type Props = {
   titulo: string;
@@ -17,7 +16,7 @@ const isHome = pathname === "/";
 ---
 
 <!doctype html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -27,97 +26,62 @@ const isHome = pathname === "/";
     <title>{titulo}</title>
     <ClientRouter />
   </head>
-  <body
-    class="relative min-h-screen"
-    transition:animate={fade({ duration: "0.25s" })}
-  >
-    {isHome && <Header />}
+  <body class="relative min-h-screen">
+    <Header />
 
     <main>
       <slot />
     </main>
 
-    {isHome && <Footer />}
+    <Footer />
     <script>
       import AOS from "aos";
-      AOS.init();
+
+      // Solo activa AOS si hay elementos con data-aos y no se prefiere
+      // menos movimiento. Evita ocultar contenido si JS falla.
+      const motionOK = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const hasAos = document.querySelectorAll("[data-aos]").length > 0;
+
+      if (hasAos && motionOK) {
+        AOS.init({ once: true, duration: 400, offset: 40 });
+      }
 
       function setupScrollSpy() {
-        const titles = document.querySelectorAll<HTMLElement>("h1[id]");
-        // Seleccionamos links que NO sean el botón de "Agendar Cita" (el cual tiene href="#contacto")
-        // O simplemente filtramos por la clase .links-nav que ya usas
-        const navLinks =
-          document.querySelectorAll<HTMLAnchorElement>(".links-nav");
+        const links = document.querySelectorAll<HTMLAnchorElement>(
+          'a[href^="#"]'
+        );
 
-        if (titles.length === 0 || navLinks.length === 0) return;
+        if (links.length === 0) return;
 
-        // Función única para resaltar
-        const setActiveLink = (id: string | null) => {
-          navLinks.forEach((link) => {
-            const href = link.getAttribute("href")?.replace("#", "");
-            if (href === id) {
-              link.classList.add("active", "text-amber-300", "font-bold"); // Ejemplo de resalte
-              link.classList.remove("text-white");
-            } else {
-              link.classList.remove("active", "text-amber-300", "font-bold");
-              link.classList.add("text-white");
-            }
-          });
-        };
-
-        // --- 1. MANEJO DE CLICS ---
-        navLinks.forEach((link) => {
+        links.forEach((link) => {
           link.onclick = (e) => {
             const href = link.getAttribute("href");
-            if (!href?.startsWith("#")) return; // Solo actuar si es un link interno
+            if (!href || href === "#") return;
 
             e.preventDefault();
-            const id = href.replace("#", "");
-            const target = document.getElementById(id);
+            const target = document.getElementById(href.slice(1));
 
             if (target) {
-              // Resaltamos inmediatamente al hacer clic para feedback instantáneo
-              setActiveLink(id);
-
               target.scrollIntoView({
                 behavior: "smooth",
                 block: "start",
               });
             }
+
+            history.replaceState(null, "", window.location.pathname);
           };
         });
 
-        // --- 2. OBSERVER OPTIMIZADO ---
-        // El rootMargin "-10% 0px -80% 0px" crea una "línea de detección" cerca del tope
-        const observerOptions: IntersectionObserverInit = {
-          root: null,
-          rootMargin: "-5% 0px -50% 0px",
-          threshold: 0,
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            // Solo activamos si la sección está entrando en la zona superior
-            if (entry.isIntersecting) {
-              const id = entry.target.getAttribute("id");
-
-              requestAnimationFrame(() => {
-                setActiveLink(id);
-
-                // Limpia la URL sin recargar para mantenerla estética
-                if (window.location.hash) {
-                  history.replaceState(null, "", window.location.pathname);
-                }
-              });
-            }
-          });
-        }, observerOptions);
-
-        titles.forEach((section) => observer.observe(section));
+        if (window.location.hash) {
+          history.replaceState(null, "", window.location.pathname);
+        }
       }
 
       // Soporte para View Transitions de Astro
-      document.addEventListener("astro:page-load", setupScrollSpy);
+      document.addEventListener("astro:page-load", () => {
+        setupScrollSpy();
+        if (hasAos && motionOK) AOS.refresh();
+      });
     </script>
   </body>
 </html>

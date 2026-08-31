@@ -19,11 +19,13 @@ const slug = propiedad.id.replace(/\.[^/.]+$/, "");
 >
   <figure>
     <Image
-      width={200}
-      height={200}
+      width={480}
+      height={320}
       src={propiedad.data.imagen}
       class="h-50 w-full object-cover object-center mask-b-from-95%"
-      alt="Propiedad Imagen"
+      alt={propiedad.data.titulo}
+      loading="lazy"
+      decoding="async"
     />
     {
       propiedad.data.destacado && (
@@ -37,14 +39,14 @@ const slug = propiedad.id.replace(/\.[^/.]+$/, "");
     <h2 class="card-title text-base md:line-clamp-1 justify-center">
       {propiedad.data.titulo}
     </h2>
-    <p class="text-amber-600 font-semibold text-sm md:text-lg lg:text-xl">
+    <p class="text-amber-800 font-semibold text-sm md:text-lg lg:text-xl">
       ${propiedad.data.precio.toLocaleString()} COP
     </p>
     <div class="card-actions justify-end">
       <a
         rel="prefetch"
         href={`/inmuebles/${slug}`}
-        class="btn btn-warning text-white w-full uppercase">Ver Propiedad</a
+        class="btn btn-warning text-black w-full uppercase">Ver Propiedad</a
       >
     </div>
   </div>

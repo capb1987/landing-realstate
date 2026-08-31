@@ -6,7 +6,7 @@ habitaciones: 4
 baños: 5
 area: 210
 parqueadero: false
-imagen: "/images/apto-golf.jpg"
+imagen: "../../img/apto-golf.jpg"
 destacado: true
 ---
 

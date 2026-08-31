@@ -38,6 +38,7 @@ const ContactForm = ({ propiedades }: ContactFormProps) => {
     w-full px-4 py-3 rounded-none border-b-2 transition-colors duration-200
     bg-gray-50 text-slate-900 placeholder:text-gray-400
     focus:outline-none focus:bg-white
+    text-sm md:text-base
     ${
       error
         ? "border-red-500 bg-red-50"
@@ -46,23 +47,19 @@ const ContactForm = ({ propiedades }: ContactFormProps) => {
   `;
 
   return (
-    <div
-      className="w-full max-w-5xl mx-auto px-4 py-12"
-      data-aos="flip-up"
-      data-aos-duration="1000"
-    >
+    <div className="w-full max-w-5xl mx-auto px-4 py-12">
       <div className="grid grid-cols-1 lg:grid-cols-3 bg-white shadow-2xl rounded-sm overflow-hidden border border-gray-100">
         {/* Columna de Información (Identidad visual) */}
-        <div className="bg-black p-8 md:p-12 text-white flex flex-col justify-between">
+        <div className="bg-linear-to-br from-black to-gray-700 p-8 md:p-12 text-white flex flex-col justify-between">
           <div>
             <div className="w-12 h-1 bg-yellow-500 mb-6"></div>
-            <h2 className="text-4xl font-light leading-tight tracking-tight">
+            <h2 className="text-2xl md:text-4xl font-light leading-tight tracking-tight">
               ¿LISTO PARA TU <br />
               <span className="font-bold text-yellow-500 tracking-tighter italic">
                 NUEVO HOGAR?
               </span>
             </h2>
-            <p className="mt-6 text-gray-400 font-light leading-relaxed">
+            <p className="mt-6 text-gray-400 font-light leading-relaxed text-sm md:text-base">
               Completa el formulario y un asesor de <strong>Smart House</strong>{" "}
               se pondrá en contacto contigo en menos de 24 horas.
             </p>
@@ -83,10 +80,14 @@ const ContactForm = ({ propiedades }: ContactFormProps) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
             {/* Nombre */}
             <div className="relative">
-              <label className="block text-[10px] uppercase tracking-widest font-bold text-black mb-1">
+              <label
+                htmlFor="nombre"
+                className="block text-[10px] uppercase tracking-widest font-bold text-black mb-1"
+              >
                 Nombre
               </label>
               <input
+                id="nombre"
                 {...register("nombre")}
                 type="text"
                 placeholder="Ej. Carlos"
@@ -101,10 +102,14 @@ const ContactForm = ({ propiedades }: ContactFormProps) => {
 
             {/* Apellido */}
             <div className="relative">
-              <label className="block text-[10px] uppercase tracking-widest font-bold text-black mb-1">
+              <label
+                htmlFor="apellido"
+                className="block text-[10px] uppercase tracking-widest font-bold text-black mb-1"
+              >
                 Apellido
               </label>
               <input
+                id="apellido"
                 {...register("apellido")}
                 type="text"
                 placeholder="Ej. Villa"
@@ -119,10 +124,14 @@ const ContactForm = ({ propiedades }: ContactFormProps) => {
 
             {/* Correo */}
             <div className="relative md:col-span-2">
-              <label className="block text-[10px] uppercase tracking-widest font-bold text-black mb-1">
+              <label
+                htmlFor="correo"
+                className="block text-[10px] uppercase tracking-widest font-bold text-black mb-1"
+              >
                 Correo Electrónico
               </label>
               <input
+                id="correo"
                 {...register("correo")}
                 type="email"
                 placeholder="correo@ejemplo.com"
@@ -137,10 +146,14 @@ const ContactForm = ({ propiedades }: ContactFormProps) => {
 
             {/* Operación */}
             <div className="relative">
-              <label className="block text-[10px] uppercase tracking-widest font-bold text-black mb-1">
+              <label
+                htmlFor="opcion"
+                className="block text-[10px] uppercase tracking-widest font-bold text-black mb-1"
+              >
                 ¿Qué buscas?
               </label>
               <select
+                id="opcion"
                 {...register("opcion")}
                 className={inputClass(errors.opcion)}
               >
@@ -157,10 +170,14 @@ const ContactForm = ({ propiedades }: ContactFormProps) => {
 
             {/* Apartamento */}
             <div className="relative">
-              <label className="block text-[10px] uppercase tracking-widest font-bold text-black mb-1">
+              <label
+                htmlFor="apartamento"
+                className="block text-[10px] uppercase tracking-widest font-bold text-black mb-1"
+              >
                 Propiedad
               </label>
               <select
+                id="apartamento"
                 {...register("apartamento")}
                 className={inputClass(errors.apartamento)}
               >
@@ -183,10 +200,14 @@ const ContactForm = ({ propiedades }: ContactFormProps) => {
 
             {/* Mensaje */}
             <div className="relative md:col-span-2">
-              <label className="block text-[10px] uppercase tracking-widest font-bold text-black mb-1">
+              <label
+                htmlFor="mensaje"
+                className="block text-[10px] uppercase tracking-widest font-bold text-black mb-1"
+              >
                 Mensaje
               </label>
               <textarea
+                id="mensaje"
                 {...register("mensaje")}
                 rows={2}
                 placeholder="Cuéntanos más..."
@@ -209,7 +230,7 @@ const ContactForm = ({ propiedades }: ContactFormProps) => {
               {isSubmitting ? (
                 <span className="loading loading-spinner loading-sm"></span>
               ) : (
-                <span className="flex items-center gap-2">
+                <span className="flex items-center gap-2 text-sm md:text-base">
                   SOLICITAR INFORMACIÓN
                   <span className="group-hover:translate-x-1 transition-transform">
                     →

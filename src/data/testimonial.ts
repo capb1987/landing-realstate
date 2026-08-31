@@ -8,9 +8,9 @@ import perfil3 from "@/img/perfil3.jpg";
 
 export const getAllTestimonials = async () => {
   const response = await axios("https://dummyjson.com/users?limit=3");
-  const data = await response.data.users;
-  const parsedTestimonials = await testimonialsSchema.parseAsync(data);
-  return parsedTestimonials;
+  const data = response.data.users;
+  const parsedTestimonials = testimonialsSchema.safeParse(data);
+  return parsedTestimonials.data;
 };
 
 const benefits: benefitsProps = [
@@ -19,7 +19,10 @@ const benefits: benefitsProps = [
   "Vender mi casa en Prado fue mucho más fácil de lo que imaginé gracias a Smart House. Su estrategia de marketing digital atrajo a los compradores correctos en tiempo récord. Me sentí acompañada en cada paso del camino.",
 ];
 
+const ratings = [4, 5, 5];
+
 export const testimonialImage_text: wrapTestionialProps = {
   benefits: benefits,
-  images: [perfil1.src, perfil2.src, perfil3.src],
+  images: [perfil1, perfil2, perfil3],
+  ratings: ratings,
 };

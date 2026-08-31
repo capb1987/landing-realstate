@@ -9,8 +9,11 @@ const { item } = Astro.props;
 
 <li>
   <a
-    class="links-nav text-base lg:text-lg text-white font-medium"
+    class="links-nav text-sm md:text-base lg:text-lg text-white font-medium"
     href={item.href}
+    data-target={item.href}
+    data-active-class="text-yellow-500"
+    data-inactive-class="text-white"
   >
     {item.title}
   </a>

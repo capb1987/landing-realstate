@@ -8,12 +8,10 @@ const propiedades: PropiedadType[] = await getCollection("inmuebles");
 ---
 
 <section
-  class="seccion min-h-dvh bg-linear-to-br from-slate-100 to-slate-300 p-4 md:p-8 items-center"
+  class="seccion min-h-dvh bg-linear-to-br from-slate-100 to-slate-300 p-4 md:p-8 items-center scroll-mt-20 md:scroll-mt-24 lg:scroll-mt-20"
+  id="contacto"
 >
-  <h1
-    id="contacto"
-    class="text-center scroll-mt-20 md:scroll-mt-26 text-2xl pt-2 md:text-4xl font-bold uppercase"
-  >
+  <h1 class="text-center text-2xl pt-2 md:text-4xl font-bold uppercase">
     Contacto
   </h1>
   <div class="divider mx-auto md:max-w-xl"></div>
@@ -23,6 +21,6 @@ const propiedades: PropiedadType[] = await getCollection("inmuebles");
   </p>
 
   <div class="container mx-auto md:max-w-3xl py-4">
-    <ContactForm propiedades={propiedades} client:only="react" />
+    <ContactForm propiedades={propiedades} client:idle="react" />
   </div>
 </section>

@@ -6,7 +6,7 @@ habitaciones: 1
 baños: 2
 area: 72
 parqueadero: true
-imagen: "/images/apto-prado.jpg"
+imagen: "../../img/apto-prado.jpg"
 destacado: true
 ---
 
